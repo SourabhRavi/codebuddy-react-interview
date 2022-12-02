@@ -1,3 +1,51 @@
 body {
   font-size: 16px;
+  background: #d0d0d0;
+}
+
+.container {
+  border-radius: 20px;
+  background: #fff;
+  padding: 30px;
+  margin-top: 100px;
+  border: 1px solid #c0c0c0;
+}
+
+.form-heading {
+  margin: 10px 0 20px;
+}
+
+.back-btn {
+  margin-right: 10px;
+}
+
+.form-select {
+  max-width: max-content;
+}
+
+.post-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  max-width: 80%;
+  margin: 100px auto 0;
+}
+
+.avatar {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .post-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .post-wrap {
+    grid-template-columns: 100%;
+  }
 }
