@@ -20,7 +20,7 @@ function FormThree({ countryCode, phoneNumber, acceptTermsAndCondition, updateFi
           type="tel"
           max={10}
           className="form-control"
-          placeholder="Enter country code"
+          placeholder="Enter phone number"
           value={phoneNumber}
           onChange={e => updateFields({ phoneNumber: e.target.value })}
         />

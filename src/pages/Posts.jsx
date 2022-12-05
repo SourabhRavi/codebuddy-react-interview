@@ -8,7 +8,10 @@ const Posts = () => {
     fetch('https://codebuddy.review/posts')
       .then(response => response.json())
       .then(data => setPosts(data.data.posts.map(item => item)))
-      .catch(error => console.log(error));
+      .catch(error => {
+        // eslint-disable-next-line
+        console.log(error);
+      });
   }
 
   useEffect(() => {

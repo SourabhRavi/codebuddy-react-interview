@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import useMultiStepForm from '../components/useMultiStepForm';
 import FormOne from '../components/FormOne';
 import FormTwo from '../components/FormTwo';
 import FormThree from '../components/FormThree';
-import { useNavigate } from 'react-router-dom';
 
 const INITIAL_DATA = {
   email: '',
@@ -22,9 +22,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [data, setData] = useState(INITIAL_DATA);
 
-  function updateFields(fields) {
+  const updateFields = fields => {
     setData(prev => ({ ...prev, ...fields }));
-  }
+  };
 
   const { steps, step, currentStepIndex, isFirstStep, isLastStep, back, next } = useMultiStepForm([
     <FormOne {...data} updateFields={updateFields} />,
@@ -36,18 +36,17 @@ const Home = () => {
     e.preventDefault();
     if (!isLastStep) return next();
     // Fetch POST method - sends new data to an API
-    console.log(JSON.stringify(data));
-    fetch('https://codebuddy.review/submit', {
+    return fetch('https://codebuddy.review/submit', {
       method: 'POST',
       body: JSON.stringify(data),
     })
       .then(response => response.json())
-      .then(response => console.log(JSON.stringify(response)))
       .then(navigate('/posts'));
   };
 
   const onSave = e => {
     e.preventDefault();
+    // eslint-disable-next-line
     alert('This app automatically saves your data as you type-in 😎');
   };
 
